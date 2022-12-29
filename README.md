@@ -26,19 +26,25 @@ The Nyx bot includes a wide range of commands to help you manage and interact wi
 🔈 !unmute - Unmutes a member in the server
 🧹 !clear - Clears messages in a channel
 ⚠️ !warn - Warns a member in the server
-🧰 Utilities
+```
+* 🧰 Utilities
+```
 📇 !userinfo - Displays information about a member
 🏙 !serverinfo - Displays information about the server
 🎭 !roleinfo - Displays information about a role
 🖼 !avatar - Displays a member's avatar
 📊 !poll - Creates a poll in the channel
-🎭 Fun
+```
+* 🎭 Fun
+```
 🎱 !8ball - Asks the magic 8-ball a question
 😸 !cat - Sends a random cat image
 🐶 !dog - Sends a random dog image
 😂 !meme - Sends a random meme image
 😆 !joke - Tells a random joke
-🎶 Music
+```
+* 🎶 Music
+```
 🎧 !play - Plays a song in the voice channel
 ⏸ !pause - Pauses the currently playing song
 ▶️ !resume - Resumes the currently paused song
