@@ -1,4 +1,4 @@
-# 🌌 Introducing Nyx, the ultimate Discord bot for organization and fun! 🌌
+# 🌌 Introducing Nyx, The Discord bot for organization and fun! 🌌
 
 With Nyx, you can easily:
 
