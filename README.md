@@ -19,7 +19,7 @@ But that's not all! Nyx also has some fun features:
 
 * 📥 Clone the repository:
 ```
-git clone https://github.com/zaidlab/nyx-bot.git
+git clone https://github.com/zaidlab/nyx.git
 ```
 * 📂 Navigate to the directory:
 ```
