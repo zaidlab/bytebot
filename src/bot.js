@@ -1,40 +1,61 @@
 // Require the necessary discord.js classes
-const { Client, Events, GatewayIntentBits, Collection } = require("discord.js");
-const fs = require('fs');
+const fs = require('node:fs');
 const path = require('node:path');
-const {prefix, token} = require('../data/config.json');
-const { SlashCommandBuilder } = require('discord.js');
+const { Client, Events, GatewayIntentBits } = require('discord.js');
+const { token } = require('../data/config.json');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// When the client is ready, run this code (only once)
-client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
+
+// Receiving command interactions
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = interaction.client.commands.get(interaction.commandName);
+
+	if (!command) {
+		console.error(`No command matching ${interaction.commandName} was found.`);
+		return;
+	}
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
 });
 
-// Create collections for commands and events
-client.commands = new Collection();
-client.events = new Collection();
+// Command Files
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-// Read the contents of the commands and events folders
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	// Set a new item in the Collection with the key as the command name and the value as the exported module
+	if ('data' in command && 'execute' in command) {
+		client.commands.set(command.data.name, command);
+	} else {
+		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+	}
+}
 
-// Loop through the command files and import them
-commandFiles.forEach(file => {
-  const command = require(`./commands/${file}`);
-  client.commands.set(command.name, command);
-});
+// Event Files 
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-// Loop through the event files and import them
-eventFiles.forEach(file => {
-  const event = require(`./events/${file}`);
-  client.events.set(event.name, event);
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
-  // Bind the event to the client
-  client.on(event.name, (...args) => event.execute(client, ...args));
-});
 
 // Log in to Discord with your client's token
 client.login(token);
