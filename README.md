@@ -13,7 +13,7 @@
 > * 🎲 Generate random prompts and ideas
 > * 🎮 Host trivia games and other activities
 
-** 🚀 Get started with Nyx today and take your Discord server to the next level! 🚀 **
+**🚀 Get started with Nyx today and take your Discord server to the next level! 🚀**
 
 # Nyx Bot Commands
 The Nyx bot includes a wide range of commands to help you manage and interact with your Discord server. Here is a list of all the available commands:
