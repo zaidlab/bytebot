@@ -1,19 +1,19 @@
-# 🌌 Introducing Nyx, The Discord bot for organization and fun! 🌌
+# 🌌 Introducing Nyx, The Bot for organization, fun and more! 🌌
 
-With Nyx, you can easily:
+**With Nyx, you can easily:**
 
-* 🗓️ Schedule events and set reminders
-* 📊 Create polls and surveys
-* 👑 Manage user roles and permissions
-* 🚨 Moderate your server with tools like warnings and muting
+| * 🗓️ Schedule events and set reminders
+| * 📊 Create polls and surveys
+| * 👑 Manage user roles and permissions
+| * 🚨 Moderate your server with tools like warnings and muting
 
-But that's not all! Nyx also has some fun features:
+**But that's not all! Nyx also has some fun features:**
 
-* 💬 Customize greetings and farewells for your server
-* 🎲 Generate random prompts and ideas
-* 🎮 Host trivia games and other activities
+| * 💬 Customize greetings and farewells for your server
+| * 🎲 Generate random prompts and ideas
+| * 🎮 Host trivia games and other activities
 
-* 🚀 Get started with Nyx today and take your Discord server to the next level! 🚀
+** 🚀 Get started with Nyx today and take your Discord server to the next level! 🚀 **
 
 # Nyx Bot Commands
 The Nyx bot includes a wide range of commands to help you manage and interact with your Discord server. Here is a list of all the available commands:
