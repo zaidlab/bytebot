@@ -36,5 +36,6 @@ npm install
 }
 ```
 🏃‍♂️ Run the bot:
+```
 node bot.js
 ```
