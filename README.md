@@ -11,10 +11,30 @@ But that's not all! Nyx also has some fun features:
 
 * 💬 Customize greetings and farewells for your server
 * 🎲 Generate random prompts and ideas
-*🎮 Host trivia games and other activities
+* 🎮 Host trivia games and other activities
 
-*🚀 Get started with Nyx today and take your Discord server to the next level! 🚀
+* 🚀 Get started with Nyx today and take your Discord server to the next level! 🚀
 
-# How To Run The Bot
+# 🚀 Getting Started
 
-- coming soon-
+* 📥 Clone the repository:
+```
+git clone https://github.com/your-username/nyx-bot.git
+```
+* 📂 Navigate to the directory:
+```
+cd nyx-bot
+```
+* 📦 Install the dependencies:
+```
+npm install
+```
+* 🔑 Add your Discord bot token to the config.json file:
+```
+{
+  "token": "your-bot-token-here"
+}
+```
+🏃‍♂️ Run the bot:
+node bot.js
+```
