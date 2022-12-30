@@ -14,7 +14,7 @@
 > * 🎮 Host trivia games and other activities
 
 **🚀 Get started with Nyx today and take your Discord server to the next level! 🚀**
-
+* Read the [wiki](https://github.com/zaidlab/Nyx/wiki/%23Home#-welcome-to-the-nyx-bot-wiki).
 ### 🚀 Getting Started
 
 * 📥 Clone the repository:
