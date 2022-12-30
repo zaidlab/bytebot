@@ -1,4 +1,4 @@
-## 🌌 Introducing Nyx, The Bot for organization, fun and more! 🌌
+### 🌌 Introducing Nyx, The Bot for organization, fun and more! 🌌
 
 **With Nyx, you can easily:**
 
