@@ -1,0 +1,18 @@
+{
+  "name": "nyx-release",
+  "version": "1.0.0",
+  "description": "**With Nyx, you can easily:**",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  },
+  "keywords": []
+}
