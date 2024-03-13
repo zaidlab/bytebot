@@ -1,3 +1,0 @@
-Nyx is now "ByteBOT"
-
-baseline 2.0 is coming soon...

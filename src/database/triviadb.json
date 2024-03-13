@@ -1,0 +1,86 @@
+{
+  "General": {
+    "questions": [
+      { "question": "What is the capital city of Japan?", "answer": "Tokyo" },
+      { "question": "How many continents are there?", "answer": "7" },
+      { "question": "What is the currency of France?", "answer": "Euro" },
+      { "question": "Who wrote 'Romeo and Juliet'?", "answer": "William Shakespeare" },
+      { "question": "What is the largest mammal in the world?", "answer": "Blue Whale" },
+      { "question": "Which planet is known as the Red Planet?", "answer": "Mars" },
+      { "question": "What is the national flower of Japan?", "answer": "Cherry Blossom" },
+      { "question": "Who painted the Mona Lisa?", "answer": "Leonardo da Vinci" },
+      { "question": "What is the square root of 64?", "answer": "8" },
+      { "question": "In which year did the Titanic sink?", "answer": "1912" }
+    ]
+  },
+  "Science": {
+    "questions": [
+      { "question": "What is the chemical symbol for oxygen?", "answer": "O2" },
+      { "question": "Who is known as the father of modern physics?", "answer": "Albert Einstein" },
+      { "question": "What is the process of plants making their own food called?", "answer": "Photosynthesis" },
+      { "question": "What is the speed of light in a vacuum?", "answer": "299,792 kilometers per second" },
+      { "question": "Which gas do plants absorb during photosynthesis?", "answer": "Carbon Dioxide" },
+      { "question": "Who discovered penicillin?", "answer": "Alexander Fleming" },
+      { "question": "What is the chemical symbol for gold?", "answer": "Au" },
+      { "question": "What is the powerhouse of the cell?", "answer": "Mitochondria" },
+      { "question": "Who proposed the theory of relativity?", "answer": "Albert Einstein" },
+      { "question": "What is the smallest prime number?", "answer": "2" }
+    ]
+  },
+  "History": {
+    "questions": [
+      { "question": "In which year did World War II end?", "answer": "1945" },
+      { "question": "Who was the first President of the United States?", "answer": "George Washington" },
+      { "question": "What ancient civilization built the pyramids?", "answer": "Ancient Egyptians" },
+      { "question": "Who was the queen of ancient Egypt known for her beauty?", "answer": "Cleopatra" },
+      { "question": "In which century did the Renaissance begin?", "answer": "14th century" },
+      { "question": "Who was the first woman to win a Nobel Prize?", "answer": "Marie Curie" },
+      { "question": "What event marked the beginning of World War I?", "answer": "Assassination of Archduke Franz Ferdinand" },
+      { "question": "Who was the leader of the Soviet Union during World War II?", "answer": "Joseph Stalin" },
+      { "question": "Which empire was ruled by Julius Caesar?", "answer": "Roman Empire" },
+      { "question": "What is the Magna Carta?", "answer": "A medieval charter" }
+    ]
+  },
+  "Movies": {
+    "questions": [
+      { "question": "What film won the Academy Award for Best Picture in 2020?", "answer": "Parasite" },
+      { "question": "Who directed the movie 'Inception'?", "answer": "Christopher Nolan" },
+      { "question": "What is the highest-grossing film of all time?", "answer": "Avatar" },
+      { "question": "In which year was the first 'Star Wars' movie released?", "answer": "1977" },
+      { "question": "Who played the character of Iron Man in the Marvel Cinematic Universe?", "answer": "Robert Downey Jr." },
+      { "question": "What is the fictional African country in 'Black Panther'?", "answer": "Wakanda" },
+      { "question": "Which movie features a character named Forrest Gump?", "answer": "Forrest Gump" },
+      { "question": "What is the name of Harry Potter's owl?", "answer": "Hedwig" },
+      { "question": "Who won the Academy Award for Best Actor in 2019?", "answer": "Joaquin Phoenix" },
+      { "question": "What is the first Pixar animated feature film?", "answer": "Toy Story" }
+    ]
+  },
+  "Music": {
+    "questions": [
+      { "question": "Who is the lead vocalist of the band Queen?", "answer": "Freddie Mercury" },
+      { "question": "What instrument does Yo-Yo Ma play?", "answer": "Cello" },
+      { "question": "Which artist is known as the 'King of Pop'?", "answer": "Michael Jackson" },
+      { "question": "What is the best-selling album of all time?", "answer": "Thriller by Michael Jackson" },
+      { "question": "Who wrote the song 'Imagine'?", "answer": "John Lennon" },
+      { "question": "What is the name of Adele's debut album?", "answer": "19" },
+      { "question": "Which rock band released the album 'The Dark Side of the Moon'?", "answer": "Pink Floyd" },
+      { "question": "What genre of music is characterized by its bluesy and often improvised sound?", "answer": "Jazz" },
+      { "question": "Who is known for playing the guitar with his teeth?", "answer": "Jimi Hendrix" },
+      { "question": "What is the national instrument of Japan?", "answer": "Koto" }
+    ]
+  },
+  "Geography": {
+    "questions": [
+      { "question": "Which ocean is the largest?", "answer": "Pacific Ocean" },
+      { "question": "What is the capital city of Brazil?", "answer": "Brasília" },
+      { "question": "Which mountain range is the longest in the world?", "answer": "Andes" },
+      { "question": "What is the largest desert in the world?", "answer": "Antarctica" },
+      { "question": "In which country would you find Mount Kilimanjaro?", "answer": "Tanzania" },
+      { "question": "What is the capital city of Australia?", "answer": "Canberra" },
+      { "question": "Which river is the longest in the world?", "answer": "Nile" },
+      { "question": "What is the smallest country in the world?", "answer": "Vatican City" },
+      { "question": "Which continent is known as the 'Land of the Rising Sun'?", "answer": "Asia" },
+      { "question": "What is the northernmost capital city in the world?", "answer": "Reykjavik" }
+    ]
+  }
+}
