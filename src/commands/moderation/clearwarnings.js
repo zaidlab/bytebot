@@ -51,7 +51,8 @@ const clearWarningsCommand = (message) => {
 };
 
 module.exports = {
-  name: 'cws',
+  name: 'rw',
+  aliases: ['clearwarns', 'rw'], // for some reason they don't work...
   description: 'Clear all warnings for a specified user.',
   execute(message, args) {
     clearWarningsCommand(message);

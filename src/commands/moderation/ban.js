@@ -1,4 +1,4 @@
-// commands/ban/ban.js
+// commands/moderation/ban.js
 const { Permissions } = require('discord.js');
 
 module.exports = {

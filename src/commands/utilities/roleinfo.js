@@ -20,7 +20,7 @@ module.exports = {
         return message.channel.send('Invalid Role');
       }
   
-      return message.channel.send(`Role Information: ${role.name}\n${role.members.size} members have that role.`);
+      return message.channel.send(`Role Information: ${role.name}\n${role.members.size} member(s) have that role.`);
     },
   };
   

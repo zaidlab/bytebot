@@ -29,7 +29,7 @@ module.exports = {
       const convertedAmount = (amount * toRate) / fromRate;
 
       message.reply({
-        content: `💰 | ${amount} ${fromCurrency.toUpperCase()} is approximately ${convertedAmount.toFixed(2)} ${toCurrency.toUpperCase()}`,
+        content: `${amount} ${fromCurrency.toUpperCase()} is approximately ${convertedAmount.toFixed(2)} ${toCurrency.toUpperCase()}`,
       });
     } catch (error) {
       console.error(error);
