@@ -3,16 +3,8 @@ const { token, prefix } = require('./config');
 const { readdirSync, statSync } = require('fs');
 const { join } = require('path');
 
-// Constants for event names
-const Events = {
-  READY: 'ready',
-  MESSAGE_CREATE: 'messageCreate',
-  ERROR: 'error',
-};
-
-// Create a new Discord client
+// Initialize Discord client with specified intents
 const client = new Client({
-  // Specify the required Gateway Intent Bits for the bot
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -22,138 +14,83 @@ const client = new Client({
   ],
 });
 
-// Map to store commands dynamically
+// Dynamically store commands for easy retrieval
 client.commands = new Map();
 
-// Function to read files in a directory and load commands/events
-const readFiles = (dir) => {
-  // Get a list of files in the directory
+/**
+ * Recursively reads files from a directory to load commands and events.
+ */
+const loadFiles = (dir) => {
   const files = readdirSync(dir);
-
-  // Iterate through each file
-  for (const file of files) {
-    // Create the full file path
+  files.forEach(file => {
     const filePath = join(dir, file);
-
-    // Check if the file is a directory
     if (statSync(filePath).isDirectory()) {
-      // If it's a directory, recursively read commands/events in subdirectories
-      readFiles(filePath);
+      loadFiles(filePath);
     } else if (file.endsWith('.js')) {
-      try {
-        // Attempt to require the script
-        const script = require(filePath);
-
-        // Check if the script is a command or event and handle accordingly
-        if (script.name && script.execute) {
-          // If it has 'name' and 'execute', it's a command, add it to the commands map
+      const script = require(filePath);
+      if (script.name) {
+        if (script.execute) {
           client.commands.set(script.name, script);
-        } else if (script.name && script.event && script.execute) {
-          // If it has 'name', 'event', and 'execute', it's an event, register the event
-          client.on(script.event, (...args) => {
-            try {
-              // Execute the event with proper error handling
-              script.execute(...args, client);
-            } catch (error) {
-              console.error(`Error executing event '${script.event}':`, error);
-            }
-          });
+        } else if (script.event && typeof script.event === 'string') {
+          client.on(script.event, script.run.bind(null, client));
         }
-      } catch (error) {
-        // Log an error if there's an issue loading the script
-        console.error(`Error loading script '${file}':`, error);
       }
     }
-  }
+  });
 };
 
-// Load commands/events from the 'commands' directory and 'events' directory
-readFiles(join(__dirname, 'commands'));
-readFiles(join(__dirname, 'events'));
+// Load commands and events
+loadFiles(join(__dirname, 'commands'));
+loadFiles(join(__dirname, 'events'));
 
-// Event: Bot is ready
-client.on(Events.READY, () => {
-  // Log bot information when it's ready
+client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
-  console.log(`Connected to ${client.guilds.cache.size} guilds:`);
-
-  // Log guild information
-  client.guilds.cache.forEach((guild) => {
+  client.guilds.cache.forEach(guild => {
     console.log(`- ${guild.name} (ID: ${guild.id}) with ${guild.memberCount} members`);
   });
 });
 
-// Event: Message is created
-client.on(Events.MESSAGE_CREATE, async (message) => {
-  try {
-    // Check if the message is not from a bot
-    if (!message.author.bot) {
-      // Check if the message is cross-posted
-      if (message.crosspostable) {
-        // Handle the cross-posted message
-        message.reply('Cross-posting messages is not allowed in this server. Your message has been removed.')
-          .then(() => message.delete())
-          .catch(error => {
-            console.error(`Error handling cross-posted message: ${error.message}`);
-          });
-      } else if (message.content.startsWith(prefix)) {
-        // Extract command name and arguments
-        const args = message.content.slice(prefix.length).trim().split(/ +/);
-        const commandName = args.shift().toLowerCase();
-
-        // Get the corresponding command from the commands map
-        const command = client.commands.get(commandName);
-
-        if (command) {
-          try {
-            // Implementing command timeout
-            const executionPromise = command.execute(message, args, client);
-            const timeout = 5000; // 5 seconds
-
-            const timeoutPromise = new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('Command execution timed out')), timeout)
-            );
-
-            // Wait for either command execution or timeout
-            let completedPromise;
-            try {
-              completedPromise = await Promise.race([executionPromise, timeoutPromise]);
-            } catch (error) {
-              // Handle the timeout error
-              console.error(`Command execution timed out: ${error.message}`);
-              message.reply('Command execution timed out.');
-            }
-
-            // Check if the command execution promise has resolved
-            if (completedPromise === executionPromise) {
-              // Command executed successfully
-              // Log guild members if the message is in a guild
-              if (message.guild) {
-                const guildMembers = message.guild.members.cache;
-              }
-            }
-          } catch (error) {
-            // Log an error if there's an issue executing the command
-            console.error(`Error executing command '${command.name}':`, error);
-            message.reply('There was an error executing the command.');
-          }
-        } else {
-          // Reply if the command is not found
-          message.reply(`Command '${commandName}' not found. Type ${prefix}help for a list of available commands.`);
-        }
-      }
+// Modified messageCreate event listener to include claptrap's logic
+client.on('messageCreate', async (message) => {
+  // Integrate claptrap functionality
+  if (!message.author.bot) {
+    const mentioned = message.mentions.has(client.user);
+    const containsKeywords = ['hey', 'hello', 'hi'].some(keyword => message.content.toLowerCase().includes(keyword));
+    if (mentioned || containsKeywords) {
+      const responses = [
+        'Hey there, minion!',
+        'Greetings, Vault Hunter!',
+        'Hello, traveler!',
+        'Hi, I\'m CL4P-TP, your friendly neighborhood robot!',
+        'What can I do for you today?',
+        'Howdy, partner!',
+      ];
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      message.reply(randomResponse);
+      return; // Prevent processing the same message further if claptrap responds
     }
-  } catch (error) {
-    // Log an error if there's an issue handling the message
-    console.error(`Error handling message: ${error}`);
+  }
+
+  // Proceed with command handling if the message isn't for claptrap
+  if (!message.content.startsWith(prefix)) return;
+
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const commandName = args.shift().toLowerCase();
+
+  const command = client.commands.get(commandName) || Array.from(client.commands.values()).find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+  if (command) {
+    try {
+      await command.execute(message, args, client);
+    } catch (error) {
+      console.error(`Error executing command '${command.name}':`, error);
+      message.reply('There was an error trying to execute that command.');
+    }
+  } else {
+    message.reply(`Command '${commandName}' not found. Use ${prefix}help for a list of available commands.`);
   }
 });
 
-// Event: Error
-client.on(Events.ERROR, (error) => {
-  // Log Discord client errors
-  console.error('Discord client error:', error);
-});
+client.on('error', (error) => console.error('Discord client error:', error));
 
-// Log in to Discord with the bot's token
 client.login(token);
